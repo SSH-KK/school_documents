@@ -1,3 +1,8 @@
-.cardImage {
-    
+.fullImage {
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+}
+.title {
+    font-size: 2rem;
 }

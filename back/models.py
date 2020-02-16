@@ -9,7 +9,7 @@ def get_img_path(instance, filename):
 class Card(models.Model):
 	type_choices = [
 	('Семинары','seminars'),
-	('Семистровки','semistrovki')
+	('Семестровки','semestrovki')
 	]
 	class_choices=[
 	('10А','10А'),

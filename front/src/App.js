@@ -37,27 +37,33 @@ class App extends React.Component {
             errorHeader,
             error
         });
-
     }
     loadData = () => {
-        API.get("/search/photos", {params: {query: this.state.query}})
+        API.get("/cards")
             .then(result => {
-                clearInterval(this.timer);
-                this.timer = null;
+                // clearInterval(this.timer);
+                // this.timer = null;
+                
                 let images = [];
-                for (let el of result.data.results) {
+                for (let el of result.data) {
                     let data = {
-                        src: el.urls.small,
-                        date: el.created_at,
+                        src: getimgName(el.image_url),
+                        date: el.post_date,
+                        class: el.class_num,
+                        title: el.title,
                     }
                     images.push(data);
                 }
-                this.timer = setInterval(() => {
-                    this.setState({
-                        isLoading: false,
-                        data: images,
-                    });
-                }, 500);
+                // this.timer = setInterval(() => {
+                //     this.setState({
+                //         isLoading: false,
+                //         data: images,
+                //     });
+                // }, 500);
+                this.setState({
+                    isLoading: false,
+                    data: images,
+                });
             })
             .catch(error => {
                 console.log("Error: " + error);
@@ -67,22 +73,18 @@ class App extends React.Component {
         if (this.state.hasError) {
             return <Redirect to="/error" />
         }
-        let body;
-        if (!this.state.data.length) {
-            if (this.state.isLoading) {
-                body = "Loading...";
-            } else {
-                body = "Nothing found";
-            }
-        } else {
-            const response = this.state.data.find(e => !!e);
-            body = <SingleView src={response.src} date={response.date} />;
-        }
         return ( 
             <Router>
                 <div className="App">
                     <MyNavbar getText={this.handleChange} />
-                    {body}
+
+                    <Switch>
+                        <Route path="/paper/:id" render={(props) => <SingleView data={this.state.data} {...props} />} />
+                    </Switch>
+                    {/* <Switch>
+                        <Route path="/" render={ () => <List data={this.state.data} /> } />
+                    </Switch> */}
+
                 </div>
             </Router>
         );
@@ -90,3 +92,7 @@ class App extends React.Component {
 }
 
 export default App;
+
+function getimgName (str) {
+    return str.slice(- (1+ str.lastIndexOf('/')));
+}

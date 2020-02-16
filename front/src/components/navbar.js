@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
+import "./navbar.scss"
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,7 +16,7 @@ import {
   FormInput,
   Collapse
 } from "shards-react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 class MyNavbar extends React.Component {
   constructor(props) {
     super(props);
@@ -39,28 +40,18 @@ class MyNavbar extends React.Component {
 
   render () {
     return (
-    <Navbar type="dark" theme="primary" expand="md">
-      <NavbarBrand href="#">Seminator</NavbarBrand>
-      <NavbarToggler onClick={this.toggleNavbar} />
-      <Collapse open={this.state.collapseOpen} navbar>
-        <Nav navbar>
-          <NavItem>
-            <NavLink to="/">
-              Home
-            </NavLink>
-          </NavItem>
-        </Nav>
-        <Nav navbar className="ml-auto">
-        <InputGroup size="sm" seamless>
-              <InputGroupAddon type="prepend">
-                <InputGroupText>
-                  <FontAwesomeIcon icon={faSearch} />
-                </InputGroupText>
-              </InputGroupAddon>
-              <FormInput className="border-0" placeholder="Search..." onChange={this.handleChange} />
-            </InputGroup>
-        </Nav>
-      </Collapse>
+    <Navbar type="dark" theme="primary">
+      <NavbarBrand tag={Link} to="/"><img className="logo" src={process.env.PUBLIC_URL + "logo.png"} /></NavbarBrand>
+      <Nav navbar className="ml-auto">
+      <InputGroup seamless>
+        <InputGroupAddon type="prepend">
+          <InputGroupText>
+            <FontAwesomeIcon icon={faSearch} />
+          </InputGroupText>
+        </InputGroupAddon>
+        <FormInput className="border-0" placeholder="Search..." onChange={this.handleChange} />
+      </InputGroup>
+      </Nav>
     </Navbar>
     );
   }

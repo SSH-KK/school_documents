@@ -1,0 +1,17 @@
+.ml-auto {
+    margin-left: auto;
+    width: 60%;
+}
+.logo {
+    max-height: calc(.95rem*1.5 + 1rem);
+}
+@media (max-aspect-ratio: 4/3) {
+    .navbar {
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+    .ml-auto {
+        margin-left: unset;
+        width: 100%;
+    }
+}
