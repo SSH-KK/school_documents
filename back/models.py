@@ -3,6 +3,7 @@ from django.conf import settings
 import os
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
+
 def get_img_path(instance, filename):
 	return('card_img/{0} {1}'.format(f'{instance.title} {instance.type_num} {instance.class_num} {instance.post_date}',filename))
 
