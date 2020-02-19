@@ -41,7 +41,4 @@ def add_slug(sender, instance, **kwargs):
 	if not instance.slug:
 		instance.slug = instance.title.replace(' ','_')
 
-@receiver(post_save, sender = User)
-def create_token(sender, instance, **kwargs):
-	Token.objects.create(user = instance)
 
