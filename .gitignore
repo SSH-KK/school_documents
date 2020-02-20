@@ -7189,3 +7189,10 @@ media/card_img/Колебания_Семинары_10А_2020-02-19_photo_2020-02
 media/card_img/колебания_Семистровки_10В_2020-02-19_photo_2020-02-19_23-10-25.jpg
 media/card_img/Семинар_23_Семинары_10В_2020-02-19_photo_2020-02-19_23-10-43.jpg
 frontend/package-lock.json
+frontend/node_modules/@babel/helper-create-class-features-plugin/LICENSE
+frontend/node_modules/@babel/helper-create-class-features-plugin/package.json
+frontend/node_modules/@babel/helper-create-class-features-plugin/README.md
+frontend/node_modules/@babel/plugin-proposal-class-properties/LICENSE
+frontend/node_modules/@babel/plugin-proposal-class-properties/package.json
+frontend/node_modules/@babel/plugin-proposal-class-properties/README.md
+frontend/static/frontend/main.js

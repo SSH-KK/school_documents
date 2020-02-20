@@ -1,8 +1,10 @@
 import React,{Component} from 'react'
-import { Route, BrowserRouter, Switch} from 'react-router-dom'
+import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import CardList from './CardList'
 import SingleSeminar from './SingleSeminar'
 import NavBar from './NavBar'
+import Admin from './admin/Admin'
+
 class App extends Component{
 	constructor (props) {
 		super(props);
@@ -12,7 +14,11 @@ class App extends Component{
 			data: [],
 			isLoading: true,
 			hasError: false,
-			query: ''
+			filter: {
+				query: '',
+				classNum: null,
+			},
+			isAdmin: false,
 		}
 	}
 
@@ -26,42 +32,52 @@ class App extends Component{
 		})
 	}
 
-	componentDidMount( ) {
+	componentDidMount() {
 		this.loadData();
 	}
 
 	loadData () {
 		this.setState({
 			isLoading: true,
-		})
+		});
+		const filter = this.state.filter;
 		fetch("/api/cards")
 		.then(response => response.json())
 		.then(result => {
-			const images = result.map(el => ({
-				src: this.getImgName(el.image),
-                date: el.post_date,
-                class_num: el.class_num,
-				title: el.title,
-				type: el.type_num,
-			}));
+			const images = result.map(el => {
+				if ((el.class_num == filter.classNum || !filter.classNum) && (el.title.indexOf(filter.query) != -1)) {
+					return ({
+						src: this.getImgName(el.image),
+						date: el.post_date,
+						classNum: el.class_num,
+						title: el.title,
+						type: el.type_num,
+					});
+				}
+			});
 			this.setState({
 				data: images,
 				isLoading: false,
-			})
+			});
 		})
 		.catch(error => console.log("Error: " + error));
 	}
 
-	handleSearch (value) {
-		if (this.state.query != value) {
+	handleSearch = (filters) => {
+		console.log(filters);
+		if (this.state.filter != filters) {
 			this.setState({
-				query: value,
-			})
+				filter: filters,
+			}, () => this.loadData());
 		}
 	}
 
 	getImgName (str) {
 		return "/" + str.slice(str.indexOf('media'));
+	}
+
+	filterCards (filters) {
+		this.setState({filters: filters.classNum});
 	}
 
 	render () {
@@ -73,10 +89,13 @@ class App extends Component{
 					{this.state.isLoading ? "Loading..." : (
 						<Switch>
 							<Route exact path='/r' render = {
-								() => <CardList data={this.state.data} /> 
+								() => <CardList data={this.state.data.filter(e => e)} /> 
 							}/>
 							<Route path='/r/seminar/:id' render = {
-								(props) => <SingleSeminar data={this.state.data[props.match.params.id]} id={props.match.params.id}/>
+								(props) => <SingleSeminar data={this.state.data.filter(e => e)[props.match.params.id]} id={props.match.params.id}/>
+							} />
+							<Route path='/r/admin' render = {
+								(props) => <Admin isAdmin={this.state.isAdmin} path={props.match.path} url={props.match.url} />
 							} />
 						</Switch>
 					)}
