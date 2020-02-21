@@ -15,22 +15,34 @@ class UploadImage extends Component {
     upload (e) {
         e.preventDefault();
         const data = e.target;
-
-        let cardProps = new FormData();
-        cardProps.append('title', data[1].value);
-        cardProps.append('class_num', data[2].value);
-        cardProps.append('type_num', data[3].value);
-        cardProps.append('image', this.fileInput.current.files[0], this.fileInput.current.files[0].name);
-        let myHeaders = new Headers();
-        myHeaders.append("Authorization", `Token ${this.props.adminToken}`);
-
-        fetch('/api/card/create'
-        , {
-            method: 'POST',
-            headers: myHeaders,
-            body: cardProps,
-        }).then(() => this.props.refresh())
-        .catch(error => console.log('Error: ' + error));
+        if (this.fileInput.current.files[0]['type'].split('/')[0] !== 'image') {
+            this.setState({
+                errors: "Можно загружать только изображения",
+            });
+        } else {
+            let cardProps = new FormData();
+            cardProps.append('title', data[1].value);
+            cardProps.append('class_num', data[2].value);
+            cardProps.append('type_num', data[3].value);
+            cardProps.append('image', this.fileInput.current.files[0], this.fileInput.current.files[0].name);
+            let myHeaders = new Headers();
+            myHeaders.append("Authorization", `Token ${this.props.adminToken}`);
+            fetch('/api/card/create', {
+                method: 'POST',
+                headers: myHeaders,
+                body: cardProps,
+            }).then(response => {
+                if (!response.ok) {
+                    response.json().then(result => {
+                        this.setState({
+                            errors: 'Не все поля заполнены верно',
+                        })
+                    });
+                } else {
+                    this.props.refresh();
+                }
+            }).catch(error => console.log('Error: ' + error));
+        }
     }
 
 	render () {

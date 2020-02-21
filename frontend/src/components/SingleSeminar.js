@@ -1,16 +1,16 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter} from 'react-router-dom';
 
 class SingleSeminar extends React.Component {
     constructor (props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        this.deleteCard = this.deleteCard.bind(this);
         this.state = {
             adminToken: localStorage.getItem('token'),
             deleted: false,
         }
     }
-    handleClick () {
+    deleteCard () {
 		let myHeaders = new Headers();
         myHeaders.append("Authorization", `Token ${this.state.adminToken}`);
         fetch(`/api/card/${this.props.data.slug}/delete`, {
@@ -32,9 +32,9 @@ class SingleSeminar extends React.Component {
                 <h1>{title}</h1>
                 <span>{date}</span>
                 <p>{classNum} - {type == "Семинаы" ? "Семинар" : "Семестровые задачи"}</p>
-                {this.state.adminToken ? <button onClick={this.handleClick}>Удалить</button> : ''}
+                {this.state.adminToken ? <button onClick={this.deleteCard}>Удалить</button> : ''}
             </div>
         );
     }
 }
-export default SingleSeminar;
+export default withRouter(SingleSeminar);

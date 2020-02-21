@@ -1,9 +1,10 @@
 import React,{Component} from 'react'
-import { Route, BrowserRouter, Switch } from 'react-router-dom'
+import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom'
 import CardList from './CardList'
 import SingleSeminar from './SingleSeminar'
 import NavBar from './NavBar'
 import Admin from './admin/Admin'
+import NotFound from './NotFound'
 
 class App extends Component{
 	constructor (props) {
@@ -80,7 +81,7 @@ class App extends Component{
 								() => <CardList data={this.state.data.filter(e => e)} /> 
 							}/>
 							<Route path='/r/seminar/:id' render = {
-								(props) => <SingleSeminar refresh={this.loadData} data={this.state.data.filter(e => e)[props.match.params.id]} id={props.match.params.id}/>
+								(props) => this.state.data[props.match.params.id] ? <SingleSeminar refresh={this.loadData} data={this.state.data.filter(e => e)[props.match.params.id]} id={props.match.params.id}/> : <NotFound error="Семинар не найден" />
 							} />
 							<Route path='/r/admin' render = {
 								(props) => <Admin refresh={this.loadData} path={props.match.path} url={props.match.url} />

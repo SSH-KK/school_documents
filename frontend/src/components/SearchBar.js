@@ -40,9 +40,9 @@ class SearchBar extends Component {
 	render () {
 		return(
             <div>
-                {this.state.toHome ? <Redirect to='/r/' /> : ''}
+                {this.state.toHome ? <Redirect to='/r' /> : ''}
                 <input type="search" value={this.state.query} onChange={this.handleInputChange}/>
-                <Select showAll={true} type='class' handleSelectChange={this.handleSelectChange} />
+                <Select showAll={true} type='classes' handleSelectChange={this.handleSelectChange} />
                 <button onClick={this.returnFilter}>Поиск</button>
             </div>
 		);
