@@ -29,7 +29,8 @@ class UploadImage extends Component {
             method: 'POST',
             headers: myHeaders,
             body: cardProps,
-        }).catch(error => console.log('Error: ' + error));
+        }).then(() => this.props.refresh())
+        .catch(error => console.log('Error: ' + error));
     }
 
 	render () {

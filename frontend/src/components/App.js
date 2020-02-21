@@ -73,17 +73,17 @@ class App extends Component{
 			<div>
 				{this.state.hasError ? 'Error!' : ''}
 				<BrowserRouter>
-					<NavBar handleSearch={this.handleSearch} adminToken={this.state.adminToken} />
+					<NavBar handleSearch={this.handleSearch} />
 					{this.state.isLoading ? 'Loading...' : (
 						<Switch>
 							<Route exact path='/r' render = {
 								() => <CardList data={this.state.data.filter(e => e)} /> 
 							}/>
 							<Route path='/r/seminar/:id' render = {
-								(props) => <SingleSeminar data={this.state.data.filter(e => e)[props.match.params.id]} id={props.match.params.id}/>
+								(props) => <SingleSeminar refresh={this.loadData} data={this.state.data.filter(e => e)[props.match.params.id]} id={props.match.params.id}/>
 							} />
 							<Route path='/r/admin' render = {
-								(props) => <Admin adminToken={this.state.adminToken} path={props.match.path} url={props.match.url} />
+								(props) => <Admin refresh={this.loadData} path={props.match.path} url={props.match.url} />
 							} />
 						</Switch>
 					)}
