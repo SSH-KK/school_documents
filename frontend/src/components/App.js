@@ -18,7 +18,6 @@ class App extends Component{
 				query: '',
 				classNum: null,
 			},
-			isAdmin: false,
 		}
 	}
 
@@ -41,7 +40,7 @@ class App extends Component{
 			isLoading: true,
 		});
 		const filter = this.state.filter;
-		fetch("/api/cards")
+		fetch('/api/cards')
 		.then(response => response.json())
 		.then(result => {
 			const images = result.map(el => {
@@ -60,11 +59,10 @@ class App extends Component{
 				isLoading: false,
 			});
 		})
-		.catch(error => console.log("Error: " + error));
+		.catch(error => console.log('Error: ' + error));
 	}
 
 	handleSearch = (filters) => {
-		console.log(filters);
 		if (this.state.filter != filters) {
 			this.setState({
 				filter: filters,
@@ -73,7 +71,7 @@ class App extends Component{
 	}
 
 	getImgName (str) {
-		return "/" + str.slice(str.indexOf('media'));
+		return '/' + str.slice(str.indexOf('media'));
 	}
 
 	filterCards (filters) {
@@ -83,10 +81,10 @@ class App extends Component{
 	render () {
 		return(
 			<div>
-				{this.state.hasError ? "Error!" : ""}
+				{this.state.hasError ? 'Error!' : ''}
 				<BrowserRouter>
-					<NavBar handleSearch={this.handleSearch} />
-					{this.state.isLoading ? "Loading..." : (
+					<NavBar handleSearch={this.handleSearch} adminToken={this.state.adminToken} />
+					{this.state.isLoading ? 'Loading...' : (
 						<Switch>
 							<Route exact path='/r' render = {
 								() => <CardList data={this.state.data.filter(e => e)} /> 
@@ -95,7 +93,7 @@ class App extends Component{
 								(props) => <SingleSeminar data={this.state.data.filter(e => e)[props.match.params.id]} id={props.match.params.id}/>
 							} />
 							<Route path='/r/admin' render = {
-								(props) => <Admin isAdmin={this.state.isAdmin} path={props.match.path} url={props.match.url} />
+								(props) => <Admin adminToken={this.state.adminToken} path={props.match.path} url={props.match.url} />
 							} />
 						</Switch>
 					)}

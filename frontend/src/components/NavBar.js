@@ -8,6 +8,7 @@ function NavBar (props) {
             <Link to="/r/">
                 <img src="../logo.svg" alt="Logo" />
             </Link>
+            <Link to="/r/admin/">Admin</Link>
             <SearchBar handleSearch={props.handleSearch} />
         </nav>
     );
