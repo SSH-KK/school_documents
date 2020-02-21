@@ -35,7 +35,6 @@ class AdminLoginForm extends Component {
     }
 
 	render () {
-        console.log(this.props.adminToken);
 		return(
             <div>
                 {this.props.adminToken ? <Redirect to="/r/admin" /> : (

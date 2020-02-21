@@ -15,26 +15,21 @@ class UploadImage extends Component {
     upload (e) {
         e.preventDefault();
         const data = e.target;
-        console.log('image', this.fileInput.current.files[0], this.fileInput.current.files[0].name);
 
         let cardProps = new FormData();
         cardProps.append('title', data[1].value);
-        cardProps.append('type_num', data[2].value);
-        cardProps.append('class_num', data[3].value);
+        cardProps.append('class_num', data[2].value);
+        cardProps.append('type_num', data[3].value);
         cardProps.append('image', this.fileInput.current.files[0], this.fileInput.current.files[0].name);
         let myHeaders = new Headers();
         myHeaders.append("Authorization", `Token ${this.props.adminToken}`);
 
-        fetch('/api/card/create', {
+        fetch('/api/card/create'
+        , {
             method: 'POST',
             headers: myHeaders,
             body: cardProps,
-        })
-        .then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        //.catch(error => console.log('Error: ' + error));
+        }).catch(error => console.log('Error: ' + error));
     }
 
 	render () {

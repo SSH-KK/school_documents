@@ -46,7 +46,7 @@ def CreateCardAPIView(request):
 		serializer.save()	
 		return Response(status = status.HTTP_201_CREATED)
 	else:
-		return Response(status = status.HTTP_400_BAD_REQUEST)
+		return Response(serializer.errors,status = status.HTTP_400_BAD_REQUEST)
 # HEADERS:
 # Authorization: Token (тут сам токен)
 #URL:
