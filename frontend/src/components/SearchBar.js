@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { SelectClass } from './Selects'
+import Select from './Selects'
 
 class SearchBar extends Component {
 	constructor(props) {
@@ -42,7 +42,7 @@ class SearchBar extends Component {
             <div>
                 {this.state.toHome ? <Redirect to='/r/' /> : ''}
                 <input type="search" value={this.state.query} onChange={this.handleInputChange}/>
-                <SelectClass handleSelectChange={this.handleSelectChange} />
+                <Select showAll={true} type='class' handleSelectChange={this.handleSelectChange} />
                 <button onClick={this.returnFilter}>Поиск</button>
             </div>
 		);

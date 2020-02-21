@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Redirect } from 'react-router-dom'
-import { SelectClass, SelectType } from '../Selects'
+import Select from '../Selects'
 
 class UploadImage extends Component {
 	constructor(props) {
@@ -39,8 +39,8 @@ class UploadImage extends Component {
                     <form onSubmit={this.upload} encType="multipart/form-data">
                         <input type='file' ref={this.fileInput} />
                         <input type='text' />
-                        <SelectClass />
-                        <SelectType />
+                        <Select type='classes' showAll={false} />
+                        <Select type='type' showAll={false} />
                         <input type='submit' value="Отправить" />
                         <br/>
                         {this.state.errors}

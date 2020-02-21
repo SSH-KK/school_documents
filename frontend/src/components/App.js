@@ -21,16 +21,6 @@ class App extends Component{
 		}
 	}
 
-	componentDidCatch (error, info) {
-		this.setState({
-			hasError: true,
-			error: {
-				header: error,
-				body: info,
-			},
-		})
-	}
-
 	componentDidMount() {
 		this.loadData();
 	}
@@ -51,6 +41,7 @@ class App extends Component{
 						classNum: el.class_num,
 						title: el.title,
 						type: el.type_num,
+						slug: el.slug,
 					});
 				}
 			});
@@ -58,8 +49,7 @@ class App extends Component{
 				data: images,
 				isLoading: false,
 			});
-		})
-		.catch(error => console.log('Error: ' + error));
+		}).catch(error => console.log('Error: ' + error));
 	}
 
 	handleSearch = (filters) => {

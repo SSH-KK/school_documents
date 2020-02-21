@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
+import ErrorHandler from './components/ErrorHandler';
 import * as serviceWorker from './serviceWorker';
-
-ReactDOM.render(<App/>, document.getElementById('app'));
+const AppWithErrorHandler = (
+    <ErrorHandler>
+        <App />
+    </ErrorHandler>
+)
+ReactDOM.render(AppWithErrorHandler, document.getElementById('app'));
 serviceWorker.unregister();
