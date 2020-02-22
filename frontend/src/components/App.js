@@ -5,6 +5,7 @@ import SingleSeminar from './SingleSeminar'
 import NavBar from './NavBar'
 import Admin from './admin/Admin'
 import NotFound from './NotFound'
+import Footer from './Footer'
 
 class App extends Component{
 	constructor (props) {
@@ -88,6 +89,7 @@ class App extends Component{
 							} />
 						</Switch>
 					)}
+					<Footer />
 				</BrowserRouter>
 			</div>
 		);
