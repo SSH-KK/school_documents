@@ -1,0 +1,89 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+}
+.card{
+	border-width: 1vh !important;
+	height: 100% !important;
+	-webkit-box-shadow: 0px 0px 5px 0.5px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 5px 0.5px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 5px 0.5px rgba(0,0,0,0.75);
+}
+.btn{
+	border-width: 1vh !important;
+}
+.btn-delete{
+	font-size: 1.25rem;
+	border-width: 0 !important;
+	padding: 0.3rem 0.5rem !important;
+	position: absolute;
+	border-radius: 0 0 0.3rem 0;
+	color: white !important;
+	right: 0;
+	bottom: 0;
+}
+.card-header{
+	text-align:center;
+	font-size: 2rem;
+	padding: 0 0.75rem !important;
+	font-weight: 400;
+}
+.card-body{
+	text-align: center;
+}
+.card-body h4{
+	font-size: 1.55rem;
+}
+.form-row{
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+#FilteringForm{
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+#SearchingForm .form-row{
+	width: 50vw;
+	margin: 0 !important;
+}
+#SearchingForm .btn{
+	border-width: 0.5vh !important;
+	padding: 0.5rem 0.25rem !important;
+}
+#LoginForm{
+	padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+#LoginForm form{
+	padding: 10%;
+}
+#LoginContainer{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#LoginContainer .row{
+	min-width: 60vw;
+	text-align: center;
+}
+@media(max-width: 768px){
+	#LoginContainer .row{
+		min-width: 100vw;
+	}	
+}
+@media(max-width: 990px){
+	#SearchingForm .form-row{
+		width:100%;
+	}
+	#SearchingForm .btn{
+		margin-top: 1rem !important;
+	}	
+	#SearchingForm{
+		margin-left: 0 !important;
+		margin-top: 1.5rem !important;
+	}
+}

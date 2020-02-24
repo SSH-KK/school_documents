@@ -2,7 +2,8 @@ from django.shortcuts import render
 from rest_framework import generics, permissions, status
 from .models import Card
 from .serializers import CardListSerializer, CardCreateSerializer
-from rest_framework.filters import OrderingFilter
+from rest_framework.filters import OrderingFilter,SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
@@ -13,7 +14,10 @@ class CardsListAPI(generics.ListAPIView):
 	queryset = Card.objects.all()
 	permission_classes = [permissions.AllowAny]
 	serializer_class = CardListSerializer
-	filter_backends = [OrderingFilter]
+	filter_backends = [SearchFilter,DjangoFilterBackend]
+	filterset_fields = ['type_num','group_num','teacher']
+	search_fields = ['title','type_num','group_num']
+	# ordering_fields = ['post_date']
 
 # HEADERS:
 # Authorization: Token (тут сам токен)
@@ -22,7 +26,7 @@ class CardsListAPI(generics.ListAPIView):
 @api_view(['DELETE'])
 @permission_classes([permissions.IsAuthenticated])
 def DeleteCardAPIVIew(request, slug):
-	card = Card.objects.get(slug = slug)
+	card = Card.objects.get(card_id = slug.split('-')[1])
 	test = card.delete()
 	if test:
 		return Response(status = status.HTTP_200_OK)
@@ -35,6 +39,7 @@ def DeleteCardAPIVIew(request, slug):
 #title: Название(уникальное)
 #type_num: Семистровки/Семинары
 #class_num: 10Б...
+#teacher: ПОПОВ....
 #image: Собственно картинка
 #URL:
 #api/card/create
