@@ -13,6 +13,7 @@ class CardList extends Component{
 		this.Get_serachin_url = this.Get_serachin_url.bind(this)
 		this.Search_change = this.Search_change.bind(this)
 		this.Search_find = this.Search_find.bind(this)
+		this.UpdateToken = this.UpdateToken.bind(this)
 		this.state = {
 			data: [],
 			isLoading: true,
@@ -23,6 +24,7 @@ class CardList extends Component{
 				group_num:'',
 			},
 			search:'',
+			isAuth:false,
 		}
 	}
 	LoadCardsList(){
@@ -80,20 +82,24 @@ class CardList extends Component{
 		event.preventDefault()
 		this.LoadCardsList()
 	}
+	UpdateToken(){
+		this.setState({isAuth: localStorage.token ? true:false})
+	}
 	componentDidMount(){
+		this.UpdateToken()
 		this.LoadCardsList()
 	}
 	render() {
 		const {data} = this.state
 		return(
 			<div>
-				<Navbar search_find={this.Search_find} search_change={this.Search_change} serch_value={this.state.value} teacher_change={this.Filters_teacher_change} task_type_change={this.Filters_task_type_change} group_num_change={this.Filters_group_num_change} />
+				<Navbar isAuth={this.state.isAuth} reload_token={this.UpdateToken} search_find={this.Search_find} search_change={this.Search_change} serch_value={this.state.value} teacher_change={this.Filters_teacher_change} task_type_change={this.Filters_task_type_change} group_num_change={this.Filters_group_num_change} />
 				<div className="container-fluid">
 					{this.state.data.length ?(
 						<div className="row row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-sm-2">
 						{this.state.isLoading ? (<h1>LOADING.....</h1>):
 							data.map((ob,id)=>{
-								return(<Card key={id} data={ob} reload={this.LoadCardsList}/>);
+								return(<Card key={id} data={ob} isAuth={this.state.isAuth} reload={this.LoadCardsList}/>);
 							}
 						)}
 						</div>

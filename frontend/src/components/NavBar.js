@@ -4,10 +4,6 @@ class Navbar extends Component{
 	constructor(props){
 		super(props)
 		this.MakeLogout = this.MakeLogout.bind(this)
-		this.UpdateToken = this.UpdateToken.bind(this)
-		this.state = {
-			isAuth:false
-		}
 	}
 	MakeLogout(){
 		const endpoint = '/api/logout'
@@ -21,17 +17,9 @@ class Navbar extends Component{
 		.then(response => response.text())
 		.then(responseData =>{
 			localStorage.removeItem('token')
-			this.UpdateToken()
+			this.props.reload_token()
 		})
 		.catch(error => console.log('Error: ' + error))
-	}
-	UpdateToken(){
-		this.setState({isAuth: localStorage.token ? true:false})
-	}
-	componentDidMount(){
-		if(localStorage.token){
-			this.setState({isAuth:true})
-		}
 	}
 	render() {
 		return(
@@ -98,13 +86,13 @@ class Navbar extends Component{
 							<div className="col-lg-1 col-md-12">
 								<button className="btn btn-primary my-2 my-sm-0" type="submit"><i className="fas fa-search"></i> Search</button>
 							</div>
-							{this.state.isAuth ? (
-								<div className="col-lg-1 col-md-12 ml-4">
-									<button className="btn btn-danger my-2 my-sm-0" onClick={this.MakeLogout}>Logout</button>
+							{this.props.isAuth ? (
+								<div className="col-lg-1 col-md-12">
+									<button className="btn btn-danger my-2 ml-4 my-sm-0" onClick={this.MakeLogout}>Logout</button>
 								</div>
 							):(
-								<div className="col-lg-1 col-md-12 ml-4">
-									<Link to="/r/login"><button className="btn btn-success my-2 my-sm-0">Login</button></Link>
+								<div className="col-lg-1 col-md-12">
+									<Link to="/r/login"><button className="btn btn-success my-2 ml-4 my-sm-0">Login</button></Link>
 								</div>
 							)}
 						</div>

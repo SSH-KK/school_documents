@@ -33,6 +33,7 @@ class Card(models.Model):
 		('Попов Д.А','Попов Д.А'),
 		('Ильин А.Б','Ильин А.Б'),
 		('Пачин И.М','Пачин И.М'),
+		('Николаева Л.Н','Николаева Л.Н'),
 	]
 	card_id = models.AutoField(primary_key=True)
 	title = models.CharField(max_length = 50, unique = True)

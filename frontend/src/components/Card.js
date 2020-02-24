@@ -52,7 +52,7 @@ class Card extends Component{
 			       			<button type="button" className={'btn btn-lg mt-2 btn-download btn-outline-'+color}>Посмотреть</button>
 			       		</a>
 			   		</div>
-			   		<button type="button" onClick={this.DeleteCard} className={'btn btn-delete btn-'+color}><i className="fas fa-times-circle"></i></button>
+			   		{this.props.isAuth ? (<button type="button" onClick={this.DeleteCard} className={'btn btn-delete btn-'+color}><i className="fas fa-times-circle"></i></button>):('')}
 			   	</div>
 			</div>
 		);

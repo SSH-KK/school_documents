@@ -14,14 +14,16 @@ html,body{
 	border-width: 1vh !important;
 }
 .btn-delete{
-	font-size: 1.25rem;
+	font-size: 1.25rem !important;
 	border-width: 0 !important;
-	padding: 0.3rem 0.5rem !important;
+	padding: 0.55rem 0.7rem !important;
 	position: absolute;
-	border-radius: 0 0 0.3rem 0;
+	border-radius: 0.7rem 0 0 0 !important;
 	color: white !important;
 	right: 0;
 	bottom: 0;
+	margin:0 !important;
+	box-shadow: none !important;
 }
 .card-header{
 	text-align:center;
@@ -85,5 +87,8 @@ html,body{
 	#SearchingForm{
 		margin-left: 0 !important;
 		margin-top: 1.5rem !important;
+	}
+	#SearchingForm .btn-danger,.btn-success{
+		margin-left: 0 !important;
 	}
 }
