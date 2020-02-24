@@ -10,5 +10,9 @@ export default function Select (props) {
         items.shift();
     }
     const selects = items.map((el, key) => <option key={key}>{el}</option>);
-    return <select onChange={props.handleSelectChange}>{selects}</select>
+    return (
+        <select onChange={props.handleSelectChange}>
+            {props.children}{selects}
+        </select>
+    );
 }

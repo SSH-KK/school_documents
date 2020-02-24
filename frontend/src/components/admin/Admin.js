@@ -35,7 +35,7 @@ class Admin extends Component {
 	render () {
 		return(
 			<div>
-				{ this.state.adminToken ? <button onClick={this.logout}>Выход</button> : '' }
+				{ this.state.adminToken && <button onClick={this.logout}>Выход</button> }
 				<Switch>
                 	<Route exact path={this.props.path} adminToken={this.state.adminToken} render={
 						() => <UploadImageForm refresh={this.props.refresh} adminToken={this.state.adminToken} />

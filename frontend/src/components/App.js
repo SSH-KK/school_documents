@@ -7,7 +7,7 @@ import Admin from './admin/Admin'
 import NotFound from './NotFound'
 import Footer from './Footer'
 
-class App extends Component{
+class App extends Component {
 	constructor (props) {
 		super(props);
 		this.loadData = this.loadData.bind(this);
@@ -73,23 +73,22 @@ class App extends Component{
 	render () {
 		return(
 			<div>
-				{this.state.hasError ? 'Error!' : ''}
+				{this.state.hasError && 'Error!'}
 				<BrowserRouter>
 					<NavBar handleSearch={this.handleSearch} />
-					{this.state.isLoading ? 'Loading...' : (
-						<Switch>
-							<Route exact path='/r' render = {
-								() => <CardList data={this.state.data.filter(e => e)} /> 
-							}/>
-							<Route path='/r/seminar/:id' render = {
-								(props) => this.state.data[props.match.params.id] ? <SingleSeminar refresh={this.loadData} data={this.state.data.filter(e => e)[props.match.params.id]} id={props.match.params.id}/> : <NotFound error="Семинар не найден" />
-							} />
-							<Route path='/r/admin' render = {
-								(props) => <Admin refresh={this.loadData} path={props.match.path} url={props.match.url} />
-							} />
-						</Switch>
-					)}
-					<Footer />
+					<Switch>
+						<Route exact path='/r' render = {
+							() => <CardList data={this.state.data.filter(e => e)} /> 
+						}/>
+						<Route path='/r/seminar/:id' render = {
+							(props) => this.state.data[props.match.params.id] ? <SingleSeminar refresh={this.loadData} data={this.state.data.filter(e => e)[props.match.params.id]} id={props.match.params.id}/> : <NotFound error="Семинар не найден" />
+						} />
+						<Route path='/r/admin' render = {
+							(props) => <Admin refresh={this.loadData} path={props.match.path} url={props.match.url} />
+						} />
+						<Route path='/r/empty' render = {''} />
+					</Switch>
+					<Footer isLoading={this.state.isLoading} />
 				</BrowserRouter>
 			</div>
 		);

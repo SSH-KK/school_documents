@@ -1,35 +1,18 @@
 import React from 'react'
-import styled from 'styled-components'
+import { WaveTopBottomLoading } from 'react-loadingg';
 
-const StyledFooter = styled.footer`
-    bottom: 0;
-    position: absolute;
-    width: 100%;
-    height: 25vh;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgb(54, 54, 69);
-    padding-top: 20px;
-    color: white;
-`
-const WhiteBlock = styled.div`
-    position: absolute;
-    background: #fff;
-    width: 100%;
-    top: 0;
-    border-radius: 0 0 20px 20px;
-    height: 20px;
-`
-
-export default function Footer () {
+export default function Footer (props) {
     return (
-        <StyledFooter>
-            <WhiteBlock></WhiteBlock>
+        <footer>
+            <div className={`topNotch ${props.isLoading && 'expandedFooter'}`} />
+            <div className="loading" hidden={!props.isLoading}>
+                <WaveTopBottomLoading style={{
+                    position: 'relative',
+                    margin: 'auto',
+                }} color="#fff" />
+            </div>
             <h1>✌️</h1>
             <p> Prod. by Dima & Artemka</p>
-        </StyledFooter>
+        </footer>
     )
 }

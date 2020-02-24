@@ -6,9 +6,9 @@ function CardList (props) {
 		return <Card key={key} id={key} data={el} />
 	})) : "Nothing found";
 	return(
-		<div>
+		<main>
 			{list}
-		</div>
+		</main>
 	);
 }
 export default CardList;

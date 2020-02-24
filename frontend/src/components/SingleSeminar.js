@@ -27,12 +27,12 @@ class SingleSeminar extends React.Component {
         const {src, date, classNum, title, type } = this.props.data;
         return (
             <div>
-                {this.state.deleted ? <Redirect to="/r" /> : ''}
+                {this.state.deleted && <Redirect to="/r" />}
                 <img src={src} alt={title} />
                 <h1>{title}</h1>
                 <span>{date}</span>
                 <p>{classNum} - {type == "Семинаы" ? "Семинар" : "Семестровые задачи"}</p>
-                {this.state.adminToken ? <button onClick={this.deleteCard}>Удалить</button> : ''}
+                {this.state.adminToken && <button onClick={this.deleteCard}>Удалить</button>}
             </div>
         );
     }
