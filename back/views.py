@@ -57,7 +57,6 @@ def CreateCardAPIView(request):
 #URL:
 #api/card/create
 @api_view(['POST'])
-@permission_classes([permissions.IsAuthenticated])
 def Logout(request):
 	Token.objects.get(user = request.user).delete()
 	return Response(status = status.HTTP_200_OK)

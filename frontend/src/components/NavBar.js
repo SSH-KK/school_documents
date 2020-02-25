@@ -78,7 +78,7 @@ class Navbar extends Component{
 							</div>
 						</div>
 					</form>
-					<form id="SearchingForm" className="ml-5" onSubmit={this.props.search_find}>
+					<form id="SearchingForm" onSubmit={this.props.search_find}>
 						<div className="form-row">
 							<div className="col-lg-8 col-md-12">
 								<input className="form-control mr-sm-2" onChange={this.props.search_change} value={this.props.serch_value} type="search" placeholder="Search" aria-label="Search"/>
@@ -87,11 +87,12 @@ class Navbar extends Component{
 								<button className="btn btn-primary my-2 my-sm-0" type="submit"><i className="fas fa-search"></i> Search</button>
 							</div>
 							{this.props.isAuth ? (
-								<div className="col-lg-1 col-md-12">
+								<div className="col-lg-1 col-md-12 ml-3">
 									<button className="btn btn-danger my-2 ml-4 my-sm-0" onClick={this.MakeLogout}>Logout</button>
+									<Link to="/r/post_card"><button className="btn btn-success my-2 ml-4 my-sm-0">MakeCard</button></Link>
 								</div>
 							):(
-								<div className="col-lg-1 col-md-12">
+								<div className="col-lg-1 col-md-12 ml-3">
 									<Link to="/r/login"><button className="btn btn-success my-2 ml-4 my-sm-0">Login</button></Link>
 								</div>
 							)}

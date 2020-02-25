@@ -4,69 +4,67 @@ import { Route, Redirect } from 'react-router-dom'
 class Login extends Component{
 	constructor(props){
 		super(props)
-		this.PasswordChange = this.PasswordChange.bind(this)
-		this.UsernameChange = this.UsernameChange.bind(this)
+		this.FormsChange = this.FormsChange.bind(this)
 		this.MakeLogin = this.MakeLogin.bind(this)
-		this.LoginFormSubmit = this.LoginFormSubmit.bind(this)
-		this.UpdateToken = this.UpdateToken.bind(this)
 		this.state={
 			username:'',
 			password:'',
-			isAuth:false
+			errors:false,
 		}
 	}
-	MakeLogin(data){
+	MakeLogin(event){
+		event.preventDefault()
 		const endpoint = '/api/login'
-		let formdata = new FormData(data)
-		let options ={
+		let formdata = new FormData(event.target)
+		let options = {
 			method:'POST',
 			body:formdata,
 		}
 		fetch(endpoint,options)
-		.then(response => response.json())
-		.then(responseData =>{
-			localStorage.setItem('token',responseData.token)
-			this.UpdateToken()
+		.then(response => {	
+			if(response.ok){
+				response.json().then(responseData =>{
+					localStorage.setItem('token',responseData.token)
+					this.props.UpdateToken()
+					})
+					.catch(error => console.log('Error: ' + error))
+			}
+			else{
+				this.setState({errors:true})
+			}
 		})
-		.catch(error => console.log('Error: ' + error))
 	}
-	LoginFormSubmit(event){
+	FormsChange(event){
 		event.preventDefault()
-		this.MakeLogin(event.target)
-	}
-	PasswordChange(event){
-		this.setState({password:event.target.value})
-	}
-	UsernameChange(event){
-		this.setState({username:event.target.value})
-	}
-	UpdateToken(){
-		this.setState({isAuth: localStorage.token ? true:false})
+		this.setState({
+			[event.target.name]:event.target.value
+		})
+		this.setState({errors:false})
 	}
 	render(){
 		return(
-			<Route exact path="/r/login">
-				{this.state.isAuth ? (<Redirect to="/r"/>) : (
-					<div className="container-fluid" id="LoginContainer">
-						<div className="row">
-							<div className="col-12" id="LoginForm">
-			                    <h1 className="font-weight-bold">LOGIN</h1>
-			                    <form onSubmit={this.LoginFormSubmit}>
-			                        <div className="form-group">
-			                            <input type="text" name="username" className="form-control" placeholder="Your Email *" onChange={this.UsernameChange} value={this.state.username} />
-			                        </div>
-			                        <div className="form-group">
-			                            <input type="password" name="password" className="form-control" placeholder="Your Password *" onChange={this.PasswordChange} value={this.state.password} />
-			                        </div>
-			                        <div className="form-group">
-			                            <button type="submit" className="btn btn-primary">Submit</button>
-			                        </div>
-			                    </form>
-		                	</div>	
-						</div>
+			this.props.isAuth ? (<Redirect to="/r"/>) : (
+				<div className="container-fluid" id="AuthContainer">
+					<div className="row">
+						<div className="col-12" id="AuthForm">
+			                <h1 className="font-weight-bold">LOGIN</h1>
+			                <form onSubmit={this.MakeLogin}>
+			                    <div className="form-group">
+			                    	<input type="text" name="username" className={`form-control ${this.state.errors ? 'is-invalid':''}`} placeholder="Your Email *" onChange={this.FormsChange} value={this.state.username} />
+			                    	<div className="invalid-feedback">Incorrect username</div>
+			                    </div>
+			                    <div className="form-group">
+			                    	<input type="password" name="password" className={`form-control ${this.state.errors ? 'is-invalid':''}`} placeholder="Your Password *" onChange={this.FormsChange} value={this.state.password} />
+			                    	<div className="invalid-feedback">Incorrect password</div>
+			                    </div>
+			                    <div className="form-group">
+		                           <button type="submit" className="btn btn-primary">Submit</button>
+			                    </div>
+			                </form>
+		               	</div>	
 					</div>
-				)}
-			</Route>
+				</div>
+			)
 		);
 	}
 }

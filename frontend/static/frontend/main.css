@@ -18,10 +18,10 @@ html,body{
 	border-width: 0 !important;
 	padding: 0.55rem 0.7rem !important;
 	position: absolute;
-	border-radius: 0.7rem 0 0 0 !important;
+	border-radius: 1rem 0 0 0 !important;
 	color: white !important;
-	right: 0;
-	bottom: 0;
+	right: -2px;
+	bottom: -2px;
 	margin:0 !important;
 	box-shadow: none !important;
 }
@@ -38,7 +38,6 @@ html,body{
 	font-size: 1.55rem;
 }
 .form-row{
-	justify-content: center;
 	align-items: center;
 	text-align: center;
 }
@@ -55,26 +54,26 @@ html,body{
 	border-width: 0.5vh !important;
 	padding: 0.5rem 0.25rem !important;
 }
-#LoginForm{
+#AuthForm{
 	padding: 5%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
-#LoginForm form{
-	padding: 10%;
-}
-#LoginContainer{
+#AuthContainer{
 	display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
-#LoginContainer .row{
-	min-width: 60vw;
+#AuthContainer .row{
+	min-width: 60%;
 	text-align: center;
 }
+.custom-file-label{
+	text-align: left;
+}
 @media(max-width: 768px){
-	#LoginContainer .row{
-		min-width: 100vw;
+	#AuthContainer .row{
+		min-width: 90vw;
 	}	
 }
 @media(max-width: 990px){

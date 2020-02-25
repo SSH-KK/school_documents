@@ -49,7 +49,7 @@ class Card extends Component{
 			       		<h4 className="card-date">{data.post_date}</h4>
 			       		<h4 className="card-teacher">{data.teacher}</h4>
 			       		<a href={this.getImgName(data.image)} target="_blank">
-			       			<button type="button" className={'btn btn-lg mt-2 btn-download btn-outline-'+color}>Посмотреть</button>
+			       			<button type="button" className={'btn btn-lg mt-2 btn-download btn-outline-'+color}>Просмотр</button>
 			       		</a>
 			   		</div>
 			   		{this.props.isAuth ? (<button type="button" onClick={this.DeleteCard} className={'btn btn-delete btn-'+color}><i className="fas fa-times-circle"></i></button>):('')}
