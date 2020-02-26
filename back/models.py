@@ -52,8 +52,8 @@ class Card(models.Model):
 	post_date = models.DateField(auto_now = True)
 	image = models.ImageField(upload_to = get_img_path, blank = False, null = False)
 
-	def __str__(self):
-		return((f'{self.title}_{self.type_num}_{self.group_num}_{self.teacher}_{self.post_date}').encode('utf8'))
+	def __unicode__(self):
+		return(f'{self.title}_{self.type_num}_{self.group_num}_{self.teacher}_{self.post_date}')
 
 @receiver(post_delete, sender = Card)
 def delete_card_img(sender, instance, **kwargs):
