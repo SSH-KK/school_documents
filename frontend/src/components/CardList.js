@@ -7,12 +7,10 @@ class CardList extends Component{
 	constructor(props){
 		super(props)
 		this.LoadCardsList = this.LoadCardsList.bind(this)
-		this.Filters_teacher_change = this.Filters_teacher_change.bind(this)
-		this.Filters_group_num_change = this.Filters_group_num_change.bind(this)
-		this.Filters_task_type_change = this.Filters_task_type_change.bind(this)
 		this.Get_serachin_url = this.Get_serachin_url.bind(this)
 		this.Search_change = this.Search_change.bind(this)
 		this.Search_find = this.Search_find.bind(this)
+		this.Filters_change = this.Filters_change.bind(this)
 		this.state = {
 			data: [],
 			isLoading: true,
@@ -55,23 +53,11 @@ class CardList extends Component{
 		}
 		return(main_url)
 	}
-	Filters_teacher_change(event){
+	Filters_change(event){
 		event.preventDefault()
 		let filt = {...this.state.filters}
-		filt.teacher = event.target.value
-		this.setState({filters:filt},()=>{this.LoadCardsList()})
-	}
-	Filters_task_type_change(event){
-		event.preventDefault()
-		let filt = {...this.state.filters}
-		filt.type_num = event.target.value
-		this.setState({filters:filt},()=>{this.LoadCardsList()})
-	}
-	Filters_group_num_change(event){
-		event.preventDefault()
-		let filt = {...this.state.filters}
-		filt.group_num = event.target.value
-		this.setState({filters:filt},()=>{this.LoadCardsList()})
+		filt[event.target.name] = event.target.value
+		this.setState({filters:filt},()=>{console.log(this.state.filters);this.LoadCardsList()})
 	}
 	Search_change(event){
 		this.setState({search:event.target.value});
@@ -88,17 +74,17 @@ class CardList extends Component{
 		const {data} = this.state
 		return(
 			<div>
-				<Navbar isAuth={this.props.isAuth} reload_token={this.props.UpdateToken} search_find={this.Search_find} search_change={this.Search_change} serch_value={this.state.value} teacher_change={this.Filters_teacher_change} task_type_change={this.Filters_task_type_change} group_num_change={this.Filters_group_num_change} />
+				<Navbar filters_change={this.Filters_change} isAuth={this.props.isAuth} reload_token={this.props.UpdateToken} search_find={this.Search_find} search_change={this.Search_change} serch_value={this.state.value}/>
 				<div className="container-fluid">
 					{this.state.data.length ?(
 						<div className="row row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-sm-2">
-						{this.state.isLoading ? (<h1>LOADING.....</h1>):
+						{this.state.isLoading ? (<h1>ЗАГРУЗКА.....</h1>):
 							data.map((ob,id)=>{
 								return(<Card key={id} data={ob} isAuth={this.props.isAuth} reload={this.LoadCardsList}/>);
 							}
 						)}
 						</div>
-					):(<h1>NOTHIG WAS FOUNDED</h1>)}
+					):(<h1>Ничего не было найдено</h1>)}
 				</div>
 			</div>
 		);

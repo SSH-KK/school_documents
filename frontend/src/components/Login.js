@@ -15,7 +15,9 @@ class Login extends Component{
 	MakeLogin(event){
 		event.preventDefault()
 		const endpoint = '/api/login'
-		let formdata = new FormData(event.target)
+		let formdata = new FormData()
+		formdata.append('username', this.state.username);
+		formdata.append('password', this.state.password);
 		let options = {
 			method:'POST',
 			body:formdata,
@@ -47,18 +49,18 @@ class Login extends Component{
 				<div className="container-fluid" id="AuthContainer">
 					<div className="row">
 						<div className="col-12" id="AuthForm">
-			                <h1 className="font-weight-bold">LOGIN</h1>
+			                <h1 className="font-weight-bold">Вход</h1>
 			                <form onSubmit={this.MakeLogin}>
 			                    <div className="form-group">
-			                    	<input type="text" name="username" className={`form-control ${this.state.errors ? 'is-invalid':''}`} placeholder="Your Email *" onChange={this.FormsChange} value={this.state.username} />
-			                    	<div className="invalid-feedback">Incorrect username</div>
+			                    	<input type="text" name="username" className={`form-control ${this.state.errors ? 'is-invalid':''}`} placeholder="Логин *" onChange={this.FormsChange} value={this.state.username} />
+			                    	<div className="invalid-feedback">Неверный Логин</div>
 			                    </div>
 			                    <div className="form-group">
-			                    	<input type="password" name="password" className={`form-control ${this.state.errors ? 'is-invalid':''}`} placeholder="Your Password *" onChange={this.FormsChange} value={this.state.password} />
-			                    	<div className="invalid-feedback">Incorrect password</div>
+			                    	<input type="password" name="password" className={`form-control ${this.state.errors ? 'is-invalid':''}`} placeholder="Пароль *" onChange={this.FormsChange} value={this.state.password} />
+			                    	<div className="invalid-feedback">Неверный Пароль</div>
 			                    </div>
 			                    <div className="form-group">
-		                           <button type="submit" className="btn btn-primary">Submit</button>
+		                           <button type="submit" className="btn btn-primary">Войти</button>
 			                    </div>
 			                </form>
 		               	</div>	
