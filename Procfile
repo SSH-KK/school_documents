@@ -1,1 +1,1 @@
-web: gunicorn school_documents2.wsgi
+web: gunicorn school_document.wsgi
