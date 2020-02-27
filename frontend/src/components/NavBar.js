@@ -65,7 +65,7 @@ class Navbar extends Component{
 								</label>
 								<select className="form-control form-control-md" name="type_num" id="TypeFilter" onChange={this.props.filters_change}>
 				  					<option defaultValue value=''>-</option>
-							        <option value="Семистровки">Семестровки</option>
+							        <option value="Семестровки">Семестровки</option>
 							        <option value="Семинары">Семинары</option>
 							        <option value="Потоковые">Потоковые</option>
 								</select>

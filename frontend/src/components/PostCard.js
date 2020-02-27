@@ -110,7 +110,7 @@ class PostCard extends Component{
 								   		<div className="col-md-10 col-sm-12">
 								      		<select className={`form-control form-control-md ${this.state.errors ? 'is-invalid':''}`} onChange={this.FormsChange} name="TypeInput" id="TypeInput">
 							  					<option defaultValue value=''>-</option>
-										        <option value="Семистровки">Семестровки</option>
+										        <option value="Семестровки">Семестровки</option>
 										        <option value="Семинары">Семинары</option>
 										        <option value="Потоковые">Потоковые</option>
 											</select>

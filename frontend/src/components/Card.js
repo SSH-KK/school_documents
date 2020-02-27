@@ -8,7 +8,7 @@ class Card extends Component{
 		this.DeleteCard = this.DeleteCard.bind(this)
 	}
 	get_border_color(color){
-		if(color == 'Семистровки'){
+		if(color == 'Семестровки'){
 			return('danger')
 		}
 		else if(color == 'Семинары'){
