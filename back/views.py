@@ -18,7 +18,10 @@ class CardsListAPI(generics.ListAPIView):
 	filterset_fields = ['type_num','group_num','teacher']
 	search_fields = ['title','type_num','group_num']
 	ordering_fields = ['post_date']
+<<<<<<< HEAD
 	# ordering_fields = ['post_date']
+=======
+>>>>>>> 8301d736bdb5bf73051ee4a952a9bedb9be42404
 
 # HEADERS:
 # Authorization: Token (тут сам токен)

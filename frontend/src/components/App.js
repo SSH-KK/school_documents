@@ -22,9 +22,9 @@ class App extends Component{
 		return(
 			<BrowserRouter>
 				<Switch>
-					<Route exact path='/r' render={() => <CardList isAuth={this.state.isAuth} UpdateToken={this.UpdateToken}/>}/>
-					<Route exact path='/r/login' render={() => <Login isAuth={this.state.isAuth} UpdateToken={this.UpdateToken}/>}/>
-					<Route exact path='/r/post_card' render={() => <PostCard isAuth={this.state.isAuth}/>}/>
+					<Route exact path='/' render={() => <CardList isAuth={this.state.isAuth} UpdateToken={this.UpdateToken}/>}/>
+					<Route exact path='/login' render={() => <Login isAuth={this.state.isAuth} UpdateToken={this.UpdateToken}/>}/>
+					<Route exact path='/post_card' render={() => <PostCard isAuth={this.state.isAuth}/>}/>
 				</Switch>
 			</BrowserRouter>
 		);

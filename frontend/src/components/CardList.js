@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import Card from './Card'
-import Navbar from './Navbar'
+import Navbar from './NavBar'
 
 
 class CardList extends Component{
@@ -41,7 +41,11 @@ class CardList extends Component{
 		.catch(error => console.log('Error: ' + error))
 	}
 	Get_serachin_url(){
+<<<<<<< HEAD
 		let main_url = '/api/cards?ordering=-post_date&'
+=======
+		let main_url = '/api/cards?ordering=post_date&'
+>>>>>>> 8301d736bdb5bf73051ee4a952a9bedb9be42404
 		let filts = this.state.filters
 		for(let i in filts){
 			if(filts[i]!=''){
