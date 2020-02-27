@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import Card from './Card'
-import Navbar from './Navbar'
+import Navbar from './NavBar'
 
 
 class CardList extends Component{
