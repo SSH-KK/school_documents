@@ -12,7 +12,7 @@ def get_img_path(instance, filename):
 class Card(models.Model):
 	type_choices = [
 	('Семинары','seminars'),
-	('Семистровки','semistrovki'),
+	('Семестровки','semestrovki'),
 	('Потоковые','potocovye')
 	]
 	class_choices = [
@@ -51,6 +51,7 @@ class Card(models.Model):
 	teacher = models.CharField(max_length = 100, choices = teacher_choices, default = teacher_choices[0] )
 	post_date = models.DateField(auto_now = True)
 	image = models.ImageField(upload_to = get_img_path, blank = False, null = False)
+	poster = models.ForeignKey(User, on_delete=models.CASCADE, blank = True, null = True)
 
 	def __str__(self):
 		return self.title.encode('utf-8')

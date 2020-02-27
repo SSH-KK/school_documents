@@ -78,6 +78,16 @@ html,body{
 .custom-file-label{
 	text-align: left;
 }
+#coper-btn{
+	display: inline-block;
+  	text-align: center;
+  	position: fixed;
+  	bottom: 0;
+  	right: 0;
+  	font-size: .7rem;
+ 	opacity: .35;
+  	z-index: 1000;
+}
 @media(max-width: 768px){
 	#AuthContainer .row{
 		min-width: 90vw;

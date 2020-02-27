@@ -74,6 +74,7 @@ class CardList extends Component{
 		const {data} = this.state
 		return(
 			<div>
+				<p id="coper-btn">Prod. by Артём Стукалов, Дмитрий Шишков</p>
 				<Navbar filters_change={this.Filters_change} isAuth={this.props.isAuth} reload_token={this.props.UpdateToken} search_find={this.Search_find} search_change={this.Search_change} serch_value={this.state.value}/>
 				<div className="container-fluid">
 					{this.state.data.length ?(
