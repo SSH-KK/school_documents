@@ -158,7 +158,7 @@ class PostCard extends Component{
 		                	</div>	
 						</div>
 					</div>
-			):(<Redirect to="/r"/>)		
+			):(<Redirect to="/"/>)		
 		);
 	}
 }

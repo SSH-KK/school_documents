@@ -14,10 +14,10 @@ class CardsListAPI(generics.ListAPIView):
 	queryset = Card.objects.all()
 	permission_classes = [permissions.AllowAny]
 	serializer_class = CardListSerializer
-	filter_backends = [SearchFilter,DjangoFilterBackend]
+	filter_backends = [SearchFilter,DjangoFilterBackend,OrderingFilter]
 	filterset_fields = ['type_num','group_num','teacher']
 	search_fields = ['title','type_num','group_num']
-	# ordering_fields = ['post_date']
+	ordering_fields = ['post_date']
 
 # HEADERS:
 # Authorization: Token (тут сам токен)
