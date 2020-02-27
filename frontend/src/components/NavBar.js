@@ -101,12 +101,12 @@ class Navbar extends Component{
 								<button className="btn btn-primary my-2 my-sm-0" type="submit"><i className="fas fa-search"></i> Поиск</button>
 							</div>
 							{this.props.isAuth ? (
-								<div className="col-lg-1 col-md-12 ml-3">
+								<div className="col-lg-1 col-md-12 ml-lg-3">
 									<button className="btn btn-danger my-2 ml-4 my-sm-0" onClick={this.MakeLogout}>Выход</button>
 									<Link to="/r/post_card"><button className="btn btn-success my-2 ml-4 my-sm-0">Создать</button></Link>
 								</div>
 							):(
-								<div className="col-lg-1 col-md-12 ml-3">
+								<div className="col-lg-1 col-md-12 ml-lg-3">
 									<Link to="/r/login"><button className="btn btn-success my-2 ml-4 my-sm-0">Вход</button></Link>
 								</div>
 							)}

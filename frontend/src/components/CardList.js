@@ -41,7 +41,7 @@ class CardList extends Component{
 		.catch(error => console.log('Error: ' + error))
 	}
 	Get_serachin_url(){
-		let main_url = '/api/cards?'
+		let main_url = '/api/cards?ordering=-post_date&'
 		let filts = this.state.filters
 		for(let i in filts){
 			if(filts[i]!=''){
