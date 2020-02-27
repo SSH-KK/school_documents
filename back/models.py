@@ -7,7 +7,7 @@ from django.db.models.signals import post_delete, post_save, pre_save
 from django.contrib.auth import get_user_model
 
 def get_img_path(instance, filename):
-	return('card_img/{0} {1}'.format(f'{instance.title} {instance.type_num} {instance.group_num} {instance.post_date}',filename))
+	return('card_img/{0} {1}'.format((f'{instance.title} {instance.type_num} {instance.group_num} {instance.post_date}').encode('utf-8'),filename))
 
 class Card(models.Model):
 	type_choices = [
@@ -54,7 +54,7 @@ class Card(models.Model):
 	poster = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,blank = True, null = True)
 
 	def __str__(self):
-		return self.title
+		return((f'{self.title}_{self.type_num}_{self.group_num}_{self.teacher}_{self.post_date}').encode('utf-8'))
 
 @receiver(post_delete, sender = Card)
 def delete_card_img(sender, instance, **kwargs):
