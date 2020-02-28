@@ -54,7 +54,7 @@ class Card(models.Model):
 	poster = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,blank = True, null = True)
 
 	def __str__(self):
-		return((f'{self.title}_{self.type_num}_{self.group_num}_{self.teacher}_{self.post_date}').encode('utf-8'))
+		return(f'{self.group_num}_{self.post_date}')
 
 @receiver(post_delete, sender = Card)
 def delete_card_img(sender, instance, **kwargs):
