@@ -18,10 +18,6 @@ class CardsListAPI(generics.ListAPIView):
 	filterset_fields = ['type_num','group_num','teacher']
 	search_fields = ['title','type_num','group_num']
 	ordering_fields = ['post_date']
-<<<<<<< HEAD
-	# ordering_fields = ['post_date']
-=======
->>>>>>> 8301d736bdb5bf73051ee4a952a9bedb9be42404
 
 # HEADERS:
 # Authorization: Token (тут сам токен)
@@ -50,7 +46,7 @@ def DeleteCardAPIVIew(request, slug):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticated])
 def CreateCardAPIView(request):
-	serializer = CardCreateSerializer(data = request.data)
+	serializer = CardCreateSerializer(data = request.data.update({'user':request.user.id}))
 	if serializer.is_valid():
 		serializer.save()	
 		return Response(status = status.HTTP_201_CREATED)

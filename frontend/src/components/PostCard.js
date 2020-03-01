@@ -71,7 +71,7 @@ class PostCard extends Component{
 	}
 	render(){
 		return(
-			this.props.isAuth ? (
+			true ? (
 				<div className="container-fluid" id="AuthContainer">
 						<div className="row">
 							<div className="col-12" id="AuthForm">
@@ -84,8 +84,8 @@ class PostCard extends Component{
 								    	</div>
 								  	</div>
 								  	<div className="form-group row">
-								  		<label htmlFor="TeacherInput" className="col-md-2 col-sm-12 col-form-label">Преподаватель </label>
-								   		<div className="col-md-10 col-sm-12">
+								  		<label htmlFor="TeacherInput" className="col-sm-12 col-form-label">Преподаватель </label>
+								   		<div className="col-sm-12">
 								      		<select className={`form-control form-control-md ${this.state.errors ? 'is-invalid':''}`} onChange={this.FormsChange} name="TeacherInput" id="TeacherInput">
 							  					<option defaultValue value="">-</option>
 										        <option value="Попов Д.А">Попов Д.А</option>
@@ -106,8 +106,8 @@ class PostCard extends Component{
 								    	</div>
 								  	</div>
 								  	<div className="form-group row">
-								  		<label htmlFor="TypeInput" className="col-md-2 col-sm-12 col-form-label">Тип задания </label>
-								   		<div className="col-md-10 col-sm-12">
+								  		<label htmlFor="TypeInput" className="col-sm-12 col-form-label">Тип задания </label>
+								   		<div className="col-sm-12">
 								      		<select className={`form-control form-control-md ${this.state.errors ? 'is-invalid':''}`} onChange={this.FormsChange} name="TypeInput" id="TypeInput">
 							  					<option defaultValue value=''>-</option>
 										        <option value="Семестровки">Семестровки</option>
@@ -118,8 +118,8 @@ class PostCard extends Component{
 								    	</div>
 								  	</div>
 								  	<div className="form-group row">
-								  		<label htmlFor="GroupInput" className="col-md-2 col-sm-12 col-form-label">Номер группы </label>
-								   		<div className="col-md-10 col-sm-12">
+								  		<label htmlFor="GroupInput" className="col-sm-12 col-form-label">Номер группы </label>
+								   		<div className="col-sm-12">
 								      		<select className={`form-control form-control-md ${this.state.errors ? 'is-invalid':''}`} onChange={this.FormsChange} name="GroupInput" id="GroupInput">
 							  					<option defaultValue value=''>-</option>
 										        <option value="81">81</option>
@@ -139,8 +139,8 @@ class PostCard extends Component{
 								    	</div>
 								  	</div>
 								  	<div className="form-group row">
-								  		<label htmlFor="ImageInput" className="col-md-2 col-sm-12 col-form-label">Файл </label>
-								   		<div className="col-md-10 col-sm-12">
+								  		<label htmlFor="ImageInput" className="col-sm-12 col-form-label">Файл </label>
+								   		<div className="col-sm-12">
 								      		<div className="custom-file">
     											<input type="file" onChange={this.FormsChange} ref={this.fileInput} disabled={this.state.img_value[1] ? 'disabled':''} className={`custom-file-input ${this.state.img_error ? 'is-invalid':''}`} id="ImageInput" multiple aria-describedby="inputGroupFileAddon01"/>
 										    	<div className="invalid-feedback">Неверный формат файла или файл отсутствует</div>
@@ -158,7 +158,7 @@ class PostCard extends Component{
 		                	</div>	
 						</div>
 					</div>
-			):(<Redirect to="/"/>)		
+			):(<Redirect to="/r"/>)		
 		);
 	}
 }

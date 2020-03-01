@@ -31,4 +31,5 @@ class CardCreateSerializer(serializers.ModelSerializer):
 			'group_num',
 			'teacher',
 			'image',
+			'user',
 		]

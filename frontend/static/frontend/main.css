@@ -65,6 +65,9 @@ html,body{
 	padding: 5%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
+.col-form-label{
+	font-size: 1.5rem;
+}
 #AuthContainer{
 	display: flex;
     justify-content: center;
@@ -74,6 +77,8 @@ html,body{
 #AuthContainer .row{
 	min-width: 60%;
 	text-align: center;
+	justify-content: center;
+	align-items: center;
 }
 .custom-file-label{
 	text-align: left;
@@ -83,14 +88,15 @@ html,body{
   	text-align: center;
   	position: fixed;
   	bottom: 0;
-  	right: 5px;
+  	right: 7px;
   	font-size: .7rem;
  	opacity: .3;
   	z-index: 1000;
 }
 @media(max-width: 768px){
 	#AuthContainer .row{
-		min-width: 90vw;
+		width: 100%;
+		margin: 0 !important;
 	}	
 }
 @media(max-width: 990px){

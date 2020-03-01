@@ -107,11 +107,7 @@ class Navbar extends Component{
 								</div>
 							):(
 								<div className="col-lg-1 col-md-12 ml-lg-3">
-<<<<<<< HEAD
 									<Link to="/r/login"><button className="btn btn-success my-2 ml-4 my-sm-0">Вход</button></Link>
-=======
-									<Link to="/login"><button className="btn btn-success my-2 ml-4 my-sm-0">Вход</button></Link>
->>>>>>> 8301d736bdb5bf73051ee4a952a9bedb9be42404
 								</div>
 							)}
 						</div>
