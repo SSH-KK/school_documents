@@ -7199,3 +7199,8 @@ frontend/static/frontend/main.js
 media/card_img/fghfjghfjgj_Семистровки_10В_2020-02-21_photo_2020-02-16_15-25-39.jpg
 media/card_img/ghfjhfjghfjghfjg_Семистровки_10Б_2020-02-21_Emblema_prozrachnaya.png
 media/card_img/gkfjgjfhgjfngj_Семистровки_10В_2020-02-21_IMG_7688.jpg
+media
+media/*
+frontend/node_modules/*
+frontend/v8-compile-cache-0/*
+frontend/static/frontend/main.js
