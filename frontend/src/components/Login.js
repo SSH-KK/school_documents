@@ -45,7 +45,7 @@ class Login extends Component{
 	}
 	render(){
 		return(
-			this.props.isAuth ? (<Redirect to="/r"/>) : (
+			this.props.isAuth ? (<Redirect to="/"/>) : (
 				<div className="container-fluid" id="AuthContainer">
 					<div className="row">
 						<div className="col-12" id="AuthForm">
