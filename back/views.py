@@ -46,7 +46,9 @@ def DeleteCardAPIVIew(request, slug):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticated])
 def CreateCardAPIView(request):
-	serializer = CardCreateSerializer(data = request.data.update({'user':request.user.id}))
+	data = request.data
+	data['user']=request.user.id
+	serializer = CardCreateSerializer(data = data)
 	if serializer.is_valid():
 		serializer.save()	
 		return Response(status = status.HTTP_201_CREATED)

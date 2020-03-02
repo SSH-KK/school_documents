@@ -71,7 +71,7 @@ class PostCard extends Component{
 	}
 	render(){
 		return(
-			true ? (
+			this.props.isAuth ? (
 				<div className="container-fluid" id="AuthContainer">
 						<div className="row">
 							<div className="col-12" id="AuthForm">
