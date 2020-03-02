@@ -54,11 +54,7 @@ class Card(models.Model):
 	user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE,blank = True, null = True)
 
 	def __str__(self):
-<<<<<<< HEAD
-		return(f'{self.title}_{self.type_num}_{self.group_num}_{self.teacher}_{self.post_date}')
-=======
 		return(f'{self.group_num}_{self.post_date}')
->>>>>>> 1011327d59ea3972bc190ea9b1e4ca6812445a43
 
 @receiver(post_delete, sender = Card)
 def delete_card_img(sender, instance, **kwargs):
