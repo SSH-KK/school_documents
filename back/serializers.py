@@ -12,6 +12,7 @@ class CardListSerializer(serializers.ModelSerializer):
 			'type_num',
 			'group_num',
 			'post_date',
+			'predmet_type',
 			'teacher',
 			'image',
 			'slug',
@@ -30,6 +31,7 @@ class CardCreateSerializer(serializers.ModelSerializer):
 			'type_num',
 			'group_num',
 			'teacher',
+			'predmet_type',
 			'image',
 			'user',
 		]

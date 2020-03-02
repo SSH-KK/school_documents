@@ -18,7 +18,7 @@ class CardList extends Component{
 			filters:{
 				teacher:'',
 				type_num:'',
-				group_num:'',
+				predmet_type:''
 			},
 			search:'',
 		}
@@ -57,7 +57,7 @@ class CardList extends Component{
 		event.preventDefault()
 		let filt = {...this.state.filters}
 		filt[event.target.name] = event.target.value
-		this.setState({filters:filt},()=>{console.log(this.state.filters);this.LoadCardsList()})
+		this.setState({filters:filt},()=>{this.LoadCardsList()})
 	}
 	Search_change(event){
 		this.setState({search:event.target.value});

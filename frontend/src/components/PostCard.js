@@ -12,6 +12,7 @@ class PostCard extends Component{
 			TeacherInput:'',
 			TypeInput:'',
 			GroupInput:'',
+			PredmetInput:'',
 			errors:false,
 			img_error:false,
 			img_value:['Выберите файл',false],
@@ -33,6 +34,7 @@ class PostCard extends Component{
 		        formdata.append('teacher', this.state.TeacherInput);
 		        formdata.append('type_num', this.state.TypeInput);
 		        formdata.append('group_num', this.state.GroupInput);
+		        formdata.append('predmet_type', this.state.PredmetInput);
 		        formdata.append('image', this.fileInput.current.files[0], this.fileInput.current.files[0].name);
 				let options = {
 					method:'POST',
@@ -84,7 +86,7 @@ class PostCard extends Component{
 								    	</div>
 								  	</div>
 								  	<div className="form-group row">
-								  		<label htmlFor="TeacherInput" className="col-sm-12 col-form-label">Преподаватель </label>
+								  		<label htmlFor="TeacherInput" className="col-sm-12 col-form-label">Преподаватель</label>
 								   		<div className="col-sm-12">
 								      		<select className={`form-control form-control-md ${this.state.errors ? 'is-invalid':''}`} onChange={this.FormsChange} name="TeacherInput" id="TeacherInput">
 							  					<option defaultValue value="">-</option>
@@ -106,7 +108,7 @@ class PostCard extends Component{
 								    	</div>
 								  	</div>
 								  	<div className="form-group row">
-								  		<label htmlFor="TypeInput" className="col-sm-12 col-form-label">Тип задания </label>
+								  		<label htmlFor="TypeInput" className="col-sm-12 col-form-label">Тип задания</label>
 								   		<div className="col-sm-12">
 								      		<select className={`form-control form-control-md ${this.state.errors ? 'is-invalid':''}`} onChange={this.FormsChange} name="TypeInput" id="TypeInput">
 							  					<option defaultValue value=''>-</option>
@@ -118,24 +120,26 @@ class PostCard extends Component{
 								    	</div>
 								  	</div>
 								  	<div className="form-group row">
-								  		<label htmlFor="GroupInput" className="col-sm-12 col-form-label">Номер группы </label>
+								  		<label htmlFor="GroupInput" className="col-sm-12 col-form-label">Класс</label>
 								   		<div className="col-sm-12">
 								      		<select className={`form-control form-control-md ${this.state.errors ? 'is-invalid':''}`} onChange={this.FormsChange} name="GroupInput" id="GroupInput">
 							  					<option defaultValue value=''>-</option>
-										        <option value="81">81</option>
-										        <option value="82">82</option>
-										        <option value="83">83</option>
-										        <option value="84">84</option>
-										        <option value="85">85</option>
-										        <option value="86">86</option>
-										        <option value="91">91</option>
-										        <option value="92">92</option>
-										        <option value="93">93</option>
-										        <option value="94">94</option>
-										        <option value="95">95</option>
-										        <option value="96">96</option>
+										        <option value="10">10</option>
+										        <option value="11">11</option>
 											</select>
 											<div className="invalid-feedback">Неверное выбран номер группы</div>
+								    	</div>
+								  	</div>
+								  	<div className="form-group row">
+								  		<label htmlFor="PredmetInput" className="col-sm-12 col-form-label">Предмет</label>
+								   		<div className="col-sm-12">
+								      		<select className={`form-control form-control-md ${this.state.errors ? 'is-invalid':''}`} onChange={this.FormsChange} name="PredmetInput" id="PredmetInput">
+							  					<option defaultValue value=''>-</option>
+										        <option value="Математика">Математика</option>
+										        <option value="Физика">Физика</option>
+										        <option value="Информатика">Информатика</option>
+											</select>
+											<div className="invalid-feedback">Неверное выбран Предмет</div>
 								    	</div>
 								  	</div>
 								  	<div className="form-group row">

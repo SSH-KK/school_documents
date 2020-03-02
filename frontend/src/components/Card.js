@@ -45,7 +45,8 @@ class Card extends Component{
 			    	<div className="card-header">{data.title}</div>
 			    	<div className="card-body">
 			    		<h4 className="card-type">{data.type_num}</h4>
-			    		<h4 className="group-num">{data.group_num} Группа</h4>
+			    		<h4 className="card-type">{data.predmet_type}</h4>
+			    		<h4 className="group-num">{data.group_num} Класс</h4>
 			       		<h4 className="card-date">{data.post_date}</h4>
 			       		<h4 className="card-teacher">{data.teacher}</h4>
 			       		<a href={this.getImgName(data.image)} target="_blank">

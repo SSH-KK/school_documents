@@ -71,23 +71,14 @@ class Navbar extends Component{
 								</select>
 							</div>
 							<div className="col-sm-4">
-								<label htmlFor="GroupFilter">
-									<h5>Номер группы</h5>
+								<label htmlFor="PredmetFilter">
+									<h5>Предмет</h5>
 								</label>
-								<select className="form-control form-control-md" name="group_num" id="GroupFilter" onChange={this.props.filters_change}>
+								<select className="form-control form-control-md" name="predmet_type" id="PredmetFilter" onChange={this.props.filters_change}>
 				  					<option defaultValue value=''>-</option>
-							        <option value="81">81</option>
-							        <option value="82">82</option>
-							        <option value="83">83</option>
-							        <option value="84">84</option>
-							        <option value="85">85</option>
-							        <option value="86">86</option>
-							        <option value="91">91</option>
-							        <option value="92">92</option>
-							        <option value="93">93</option>
-							        <option value="94">94</option>
-							        <option value="95">95</option>
-							        <option value="96">96</option>
+							        <option value="Математика">Математика</option>
+							        <option value="Физика">Физика</option>
+							        <option value="Информатика">Информатика</option>
 								</select>
 							</div>
 						</div>
