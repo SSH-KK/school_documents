@@ -1,0 +1,43 @@
+version: "3"
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
+
+services:
+  db:
+    container_name: postgresdb
+    image: postgres
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - internal
+    labels:
+      - traefik.enable=false
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  school_document:
+    container_name: django
+    build: .    
+    command: gunicorn school_project.wsgi:application --bind 0.0.0.0:80 --workers=4
+    command: python manage.py runserver 0.0.0.0:80
+    env_file:
+      - .env
+    labels:
+      - traefik.backend=school_document
+      - traefik.frontend.rule=Host:upml-bank.dmitriy.icu
+      - traefik.docker.network=web
+      - traefik.port=80
+    networks:
+      - internal
+      - web
+    depends_on:
+      - db
+
+volumes:
+  postgres-data:
+
