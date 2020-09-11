@@ -21,15 +21,5 @@ from django.conf import settings
 urlpatterns = [
 	path('api/',include('back.urls')),
         path('admin/', admin.site.urls),
-	path('media/', ImageShow.as_view(), name='show-image')
-	path('',include('frontend.urls')),
+	path('', include('frontend.urls')),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-
-from django.http import FileResponse
-from django.views import View
-
-class ImageShow(View):
-    def get(self, request, relative_path):
-        absolute_path = '{}/{}'.format(settings.MEDIA_ROOT, relative_path)
-        response = FileResponse(open(absolute_path, 'rb'), as_attachment=True)
-        return response

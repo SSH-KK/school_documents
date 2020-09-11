@@ -7,6 +7,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 # Make a new directory to put our code in.
 RUN mkdir /code
+RUN mkdir /code/static
+RUN mkdir /code/media
 
 # Change the working directory. 
 # Every command after this will be run from the /code directory.

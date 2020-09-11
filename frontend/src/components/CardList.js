@@ -18,7 +18,8 @@ class CardList extends Component{
 			filters:{
 				teacher:'',
 				type_num:'',
-				predmet_type:''
+				predmet_type:'',
+				class_num:''
 			},
 			search:'',
 		}

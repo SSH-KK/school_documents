@@ -17,6 +17,7 @@ class PostCard extends Component{
 			img_error:false,
 			img_value:['Выберите файл',false],
 			post_success:false,
+			error_text:'',
 		}
 	}
 	MakePost(event){
@@ -33,7 +34,7 @@ class PostCard extends Component{
 				formdata.append('title', this.state.TitleInput);
 		        formdata.append('teacher', this.state.TeacherInput);
 		        formdata.append('type_num', this.state.TypeInput);
-		        formdata.append('group_num', this.state.GroupInput);
+		        formdata.append('class_num', this.state.GroupInput);
 		        formdata.append('predmet_type', this.state.PredmetInput);
 		        formdata.append('image', this.fileInput.current.files[0], this.fileInput.current.files[0].name);
 				let options = {
@@ -157,6 +158,7 @@ class PostCard extends Component{
 			                            <div className="valid-feedback">
 									    	Задание успешно создано
 									    </div>
+<div className="invalid-feedback">{this.state.error_text}</div>
 			                        </div>
 			                    </form>
 		                	</div>	

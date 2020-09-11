@@ -10,7 +10,7 @@ class CardListSerializer(serializers.ModelSerializer):
 		fields=[
 			'title',
 			'type_num',
-			'group_num',
+			'class_num',
 			'post_date',
 			'predmet_type',
 			'teacher',
@@ -21,7 +21,7 @@ class CardListSerializer(serializers.ModelSerializer):
 	def get_image(self,instance):
 		return(instance.image.path)
 	def get_slug(self,instance):
-		return(f'card-{instance.card_id}-{instance.group_num}-{instance.post_date}')
+		return(f'card-{instance.card_id}-{instance.class_num}-{instance.post_date}')
 
 class CardCreateSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -29,7 +29,7 @@ class CardCreateSerializer(serializers.ModelSerializer):
 		fields = [
 			'title',
 			'type_num',
-			'group_num',
+			'class_num',
 			'teacher',
 			'predmet_type',
 			'image',

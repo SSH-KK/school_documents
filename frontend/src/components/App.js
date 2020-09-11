@@ -25,6 +25,7 @@ class App extends Component{
 					<Route exact path='/' render={() => <CardList isAuth={this.state.isAuth} UpdateToken={this.UpdateToken}/>}/>
 					<Route exact path='/login' render={() => <Login isAuth={this.state.isAuth} UpdateToken={this.UpdateToken}/>}/>
 					<Route exact path='/post_card' render={() => <PostCard isAuth={this.state.isAuth}/>}/>
+					<Route path='*' render={() => <h1>404</h1>}/>
 				</Switch>
 			</BrowserRouter>
 		);

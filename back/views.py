@@ -15,8 +15,8 @@ class CardsListAPI(generics.ListAPIView):
 	permission_classes = [permissions.AllowAny]
 	serializer_class = CardListSerializer
 	filter_backends = [SearchFilter,DjangoFilterBackend,OrderingFilter]
-	filterset_fields = ['type_num','predmet_type','teacher']
-	search_fields = ['title','type_num','group_num']
+	filterset_fields = ['type_num','predmet_type','teacher','class_num']
+	search_fields = ['title','type_num','class_num']
 	ordering_fields = ['post_date']
 
 # HEADERS:

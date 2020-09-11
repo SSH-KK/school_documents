@@ -38,7 +38,7 @@ class Navbar extends Component{
 							<div className="col-sm-12">
 								<h4 className="font-weight-bold">ФИЛЬТРАЦИЯ:</h4>
 							</div>
-							<div className="col-sm-4">
+							<div className="col-sm-3">
 								<label htmlFor="TeacherFilter">
 									<h5>Преподаватель</h5>
 								</label>
@@ -59,7 +59,7 @@ class Navbar extends Component{
 							        <option value="Конкина Н.В">Конкина Н.В</option>
 								</select>
 							</div>
-							<div className="col-sm-4">
+							<div className="col-sm-3">
 								<label htmlFor="TypeFilter">
 									<h5>Тип задания</h5>
 								</label>
@@ -70,7 +70,7 @@ class Navbar extends Component{
 							        <option value="Потоковые">Потоковые</option>
 								</select>
 							</div>
-							<div className="col-sm-4">
+							<div className="col-sm-3">
 								<label htmlFor="PredmetFilter">
 									<h5>Предмет</h5>
 								</label>
@@ -79,6 +79,16 @@ class Navbar extends Component{
 							        <option value="Математика">Математика</option>
 							        <option value="Физика">Физика</option>
 							        <option value="Информатика">Информатика</option>
+								</select>
+							</div>
+							<div className="col-sm-3">
+								<label htmlFor="PredmetFilter">
+									<h5>Класс</h5>
+								</label>
+								<select className="form-control form-control-md" name="class_num" id="ClassFilter" onChange={this.props.filters_change}>
+				  					<option defaultValue value=''>-</option>
+							        <option value="10">10</option>
+									<option value="11">11</option>
 								</select>
 							</div>
 						</div>
@@ -109,3 +119,4 @@ class Navbar extends Component{
 	}
 }
 export default Navbar;
+
