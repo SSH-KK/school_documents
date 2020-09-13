@@ -1,16 +1,16 @@
 version: "3"
 
 networks:
-  web:
-    external: true
   internal:
     external: false
+  web:
+    external: true
 
 services:
   db:
     container_name: postgresdb
     image: postgres
-    restart: always
+    restart: unless-stopped
     env_file:
       - .env
     networks:
@@ -20,6 +20,7 @@ services:
 
   school_document:
     container_name: django
+    restart: unless-stopped
     build: .    
     command: gunicorn school_document.wsgi:application --access-logfile /code/log.log --error-logfile /code/error.log --capture-output --enable-stdio-inheritance --bind 0.0.0.0:8000 --workers=4
     expose:
@@ -28,33 +29,12 @@ services:
       - .env
     networks:
       - internal
+      - web
     volumes:
       - static-files:/code/static
       - media-files:/code/media
     depends_on:
       - db
-
-  nginx:
-    image: nginx:1.15-alpine
-    networks:
-      - internal
-      - web
-    volumes:
-      - static-files:/code/static
-      - media-files:/code/media
-      - ./nginx/certbot/conf:/etc/letsencrypt
-      - ./nginx/certbot/www:/var/www/certbot
-      - ./nginx/conf:/etc/nginx/conf.d
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - school_document
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./nginx/certbot/conf:/etc/letsencrypt
-      - ./nginx/certbot/www:/var/www/certbot
 
 volumes:
   postgres-data:
