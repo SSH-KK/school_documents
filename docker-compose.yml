@@ -17,11 +17,16 @@ services:
       - internal
     volumes:
       - postgres-data:/var/lib/postgresql/data
-
-  school_document:
+  react:
+    container_name: react
+    restart: unless-stopped
+    build: frontend/
+    volumes:
+      - front-build-folder:/frontend/build
+  django:
     container_name: django
     restart: unless-stopped
-    build: .    
+    build: backend/    
     command: gunicorn school_document.wsgi:application --access-logfile /code/log.log --error-logfile /code/error.log --capture-output --enable-stdio-inheritance --bind 0.0.0.0:8000 --workers=4
     expose:
       - 8000
@@ -40,3 +45,4 @@ volumes:
   postgres-data:
   static-files:
   media-files:
+  front-build-folder:

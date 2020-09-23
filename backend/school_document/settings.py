@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = Secrets.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["upml-bank.dmitriy.icu", "185.103.109.195", "localhost", "127.0.0.1", "0.0.0.0", "seminars.dmitriy.icu"]
 
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'back',
     'rest_framework',
-    'frontend',
     'rest_framework.authtoken',
     'django_filters',
 ]

@@ -1,0 +1,3 @@
+[submodule "school_documents_frontend"]
+	path = frontend
+	url = git@github.com:Dm1tr1y147/school_documents_frontend.git
